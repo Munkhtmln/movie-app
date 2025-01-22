@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 import { Film, Moon } from "lucide-react";
 
 export default function Header() {
@@ -7,15 +8,8 @@ export default function Header() {
         <Film />
         <p>Moive Z</p>
       </div>
-      <div>
-        <button>Genre</button>{" "}
-        <input
-          className=" border-2"
-          type="type"
-          placeholder="search"
-          name=""
-          id=""
-        />
+      <div className="flex">
+        <button>Genre</button> <Input className="w-[379px] h-[36px]" />
       </div>
       <div>
         <button>

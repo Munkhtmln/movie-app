@@ -5,6 +5,7 @@ import Upcoming from "./_components/Upcoming";
 import Popular from "./_components/Popular";
 import Toprated from "./_components/Toprated";
 import Footer from "./_components/Footer";
+import { Carousel } from "@/components/ui/carousel";
 
 export default async function Home() {
   const token =
@@ -23,6 +24,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col relative">
       <Header />
+      <Carousel className="h-[400px] w-[1280px]  bg-{https://image.tmdb.org/t/p/w500/}" />
       <Upcoming />
       <Popular />
       <Toprated />
