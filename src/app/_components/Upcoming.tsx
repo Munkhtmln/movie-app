@@ -1,3 +1,4 @@
+import { MyType } from "@/lib/type";
 import { Star } from "lucide-react";
 import Link from "next/link";
 
@@ -18,27 +19,25 @@ export default async function Upcoming() {
     <div>
       <div className="flex justify-between max-w-[1280px] h-[59px] items-center m-auto my-4">
         <p className="text-[#09090B] font-semibold text-2xl ">Upcoming</p>{" "}
-        <Link href="/upcoming">See more...</Link>
       </div>
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto ">
-        {data.results.slice(0, 10).map((movie: any, index: any) => {
+        {data.results.slice(0, 10).map((movie: MyType, index: any) => {
           return (
-            <div
-              key={index}
-              className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg"
-            >
-              <img
-                className="w-[229.73px] h-[340px] rounded-t-lg"
-                src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
-                alt=""
-              />
+            <Link href={`/nextpage/${movie.id}`} key={index}>
+              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg">
+                <img
+                  className="w-[229.73px] h-[340px] rounded-t-lg"
+                  src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+                  alt=""
+                />
 
-              <p className="flex mt-4 ml-2">
-                <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
-                {movie.vote_average}/10
-              </p>
-              <p className="ml-2">{movie.original_title}</p>
-            </div>
+                <p className="flex mt-4 ml-2">
+                  <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
+                  {movie.vote_average}/10
+                </p>
+                <p className="ml-2">{movie.original_title}</p>
+              </div>
+            </Link>
           );
         })}
       </div>
