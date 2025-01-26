@@ -19,7 +19,9 @@ export default async function Upcoming() {
     <div>
       <div className="flex justify-between max-w-[1280px] h-[59px] items-center m-auto my-4">
         <p className="text-[#09090B] font-semibold text-2xl ">Upcoming</p>{" "}
+        <Link href={"/upcoming"}>see more...</Link>
       </div>
+
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto ">
         {data.results.slice(0, 10).map((movie: MyType, index: any) => {
           return (

@@ -1,3 +1,5 @@
+import { MyType } from "@/lib/type";
+
 export default async function Home({
   params: { nextid },
 }: {
@@ -18,9 +20,7 @@ export default async function Home({
   console.log(data);
   return (
     <div>
-      {data.genres?.slice(0, 10).map(() => {
-        return <div>gfdsoihgfd</div>;
-      })}
+      <img src={"https://image.tmdb.org/t/p/w500/" + data.poster_path} alt="" />
     </div>
   );
 }
