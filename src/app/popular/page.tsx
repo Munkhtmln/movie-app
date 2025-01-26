@@ -2,6 +2,7 @@ import { MyType } from "@/lib/type";
 import exp from "constants";
 import { Divide } from "lucide-react";
 import Header from "../_components/Header";
+import Link from "next/link";
 
 export default async function Home() {
   const token =
@@ -23,13 +24,17 @@ export default async function Home() {
       <div className="flex flex-wrap gap-8 m-auto max-w-[1280px]">
         {data.results.map((movie: MyType, index: number) => {
           return (
-            <div className="">
-              <img
-                className=" w-[229.73px] h-[340px]"
-                src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
-                alt=""
-              />
-            </div>
+            <Link href={`/nextpage/${movie.id}`}>
+              {" "}
+              <div className="">
+                <img
+                  className=" w-[229.73px] h-[340px]"
+                  src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+                  alt=""
+                />
+              </div>
+              <div></div>
+            </Link>
           );
         })}
       </div>
