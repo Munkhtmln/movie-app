@@ -1,6 +1,7 @@
 import Header from "@/app/_components/Header";
 import { MyType } from "@/lib/type";
 import { Dot, Star } from "lucide-react";
+import Link from "next/link";
 
 export default async function Home({
   params: { nextid },
@@ -73,10 +74,10 @@ export default async function Home({
         </div>
       </div>
       <div className="">
-        <div className="flex max-w-[1080px] m-auto">
+        <div className="flex max-w-[1080px] m-auto gap-5">
           {data.genres?.map((genre: MyType, index: number) => {
             return (
-              <div className=" mt-4 border-2 rounded-xl " key={index}>
+              <div className=" mt-4 border-2 rounded-xl  " key={index}>
                 <p> {genre.name}</p>
               </div>
             );
@@ -102,22 +103,44 @@ export default async function Home({
         </div>
         <div className="flex gap-10 w-[1080px] mt-8 m-auto border-b-2">
           <h1>Stars</h1>
-          <p className="flex absolute left-52 gap-10">
+          <div className="flex absolute left-52 gap-10">
             {datas.cast?.slice(0, 5).map((actor: MyType, index: number) => {
               return <p key={index}>{actor.name}</p>;
             })}
-          </p>
+          </div>
         </div>
       </div>
-      <div>
-        <div>
-          <p>More like this</p>
+      <div className="max-w-[1080px] m-auto mt-8 ">
+        <div className="flex max-w-[1080px] m-auto justify-between">
+          <p className="text-[#09090B] text-2xl font-semibold">
+            More like this
+          </p>
+          <Link href={`/similar/${nextid}`}>See more...</Link>
         </div>
-        <div>
-          <img
-            src={"https://image.tmdb.org/t/p/w500/" + similarmovie?.poster_path}
-            alt=""
-          />
+        <div className="flex max-w-[1080px] gap-8 mt-8 mb-8">
+          {similarmovie.results
+            .slice(0, 5)
+            .map((like: MyType, index: number) => {
+              return (
+                <Link href={`/details/${like.id}`}>
+                  <div className="flex flex-col flex-wrap w-[190px] h-[372px] gap-spacing/1 bg-gray-100 rounded-lg">
+                    <img
+                      key={index}
+                      className="w-[190px] h-[281.38px]"
+                      src={
+                        "https://image.tmdb.org/t/p/w500/" + like?.poster_path
+                      }
+                      alt=""
+                    />
+                    <p className="flex mt-4 ml-2">
+                      <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
+                      {like.vote_average}/10
+                    </p>
+                    <p className="ml-2">{like.original_title}</p>
+                  </div>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </div>

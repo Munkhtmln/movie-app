@@ -24,7 +24,7 @@ export default async function Popular() {
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto">
         {data.results.slice(0, 10).map((movie: any, index: any) => {
           return (
-            <Link href={`/nextpage/${movie.id}`}>
+            <Link href={`/details/${movie.id}`}>
               {" "}
               <div
                 key={index}

@@ -11,6 +11,9 @@ import {
 import { Card, CardContent } from "./card";
 import { Star } from "lucide-react";
 import { MyType } from "@/lib/type";
+import Link from "next/link";
+import { Button } from "./button";
+import Trailer from "@/app/_components/Trailer";
 
 export async function CarouselDemo() {
   const token =
@@ -31,26 +34,28 @@ export async function CarouselDemo() {
       <CarouselContent>
         {data.results?.slice(0, 10).map((movie: MyType, index: number) => (
           <CarouselItem key={index} className=" relative h-[600px]">
-            <div
-              className=" absolute inset-0 z-0 bg-cover bg-no-repeat "
-              style={{
-                backgroundImage: movie?.poster_path
-                  ? `url(https://image.tmdb.org/t/p/original${movie.poster_path})`
-                  : `url('/path-to-placeholder.jpg')`,
-              }}
-            >
-              <div className="absolute flex flex-col items-start text-white  gap-4 left-[140px] bottom-[165px] w-[404px] h-[264px]">
-                <p>Now Playing</p>
-                <p>{movie.original_title}</p>
-                <div className="flex">
-                  <Star className="fill-current h-4 mt-1" />
-                  <p>{movie.vote_average}</p>
-                  <p>/10</p>
+            <Link href={`/details/${movie.id}`}>
+              <div
+                className=" absolute inset-0 z-0 bg-cover bg-no-repeat "
+                style={{
+                  backgroundImage: movie?.poster_path
+                    ? `url(https://image.tmdb.org/t/p/original${movie.poster_path})`
+                    : `url('/path-to-placeholder.jpg')`,
+                }}
+              >
+                <div className="absolute flex flex-col items-start text-white  gap-4 left-[140px] bottom-[165px] w-[404px] h-[264px]">
+                  <p>Now Playing</p>
+                  <p>{movie.original_title}</p>
+                  <div className="flex">
+                    <Star className="fill-current h-4 mt-1" />
+                    <p>{movie.vote_average}</p>
+                    <p>/10</p>
+                  </div>
+                  <p>{movie.overview}</p>
+                  <Trailer />
                 </div>
-                <p>{movie.overview}</p>
               </div>
-            </div>
-
+            </Link>
             <Card>
               <CardContent className="flex aspect-square items-center justify-center p-6">
                 <span className="text-4xl font-semibold">{index + 1}</span>

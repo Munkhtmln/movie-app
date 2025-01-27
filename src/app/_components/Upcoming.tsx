@@ -25,7 +25,7 @@ export default async function Upcoming() {
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto ">
         {data.results.slice(0, 10).map((movie: MyType, index: any) => {
           return (
-            <Link href={`/nextpage/${movie.id}`} key={index}>
+            <Link href={`/details/${movie.id}`} key={index}>
               <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg">
                 <img
                   className="w-[229.73px] h-[340px] rounded-t-lg"

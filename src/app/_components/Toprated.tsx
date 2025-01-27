@@ -23,22 +23,24 @@ export default async function Toprated() {
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto">
         {data.results.slice(0, 10).map((movie: any, index: any) => {
           return (
-            <div
-              key={index}
-              className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg"
-            >
-              <img
-                className="w-[229.73px] h-[340px] rounded-t-lg"
-                src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
-                alt=""
-              />
+            <Link href={`/details/${movie.id}`}>
+              <div
+                key={index}
+                className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg"
+              >
+                <img
+                  className="w-[229.73px] h-[340px] rounded-t-lg"
+                  src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+                  alt=""
+                />
 
-              <p className="flex mt-4 ml-2">
-                <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
-                {movie.vote_average}/10
-              </p>
-              <p className="ml-2">{movie.original_title}</p>
-            </div>
+                <p className="flex mt-4 ml-2">
+                  <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
+                  {movie.vote_average}/10
+                </p>
+                <p className="ml-2">{movie.original_title}</p>
+              </div>
+            </Link>
           );
         })}
       </div>

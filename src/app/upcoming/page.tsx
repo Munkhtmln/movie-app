@@ -1,7 +1,8 @@
 import { MyType } from "@/lib/type";
 import exp from "constants";
-import { Divide } from "lucide-react";
+import { Divide, Star } from "lucide-react";
 import Header from "../_components/Header";
+import Link from "next/link";
 
 export default async function Home() {
   const token =
@@ -23,13 +24,20 @@ export default async function Home() {
       <div className="flex flex-wrap gap-8 m-auto max-w-[1280px]">
         {data.results.map((movie: MyType, index: number) => {
           return (
-            <div className="">
-              <img
-                className=" w-[229.73px] h-[340px]"
-                src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
-                alt=""
-              />
-            </div>
+            <Link href={`/details/${movie.id}`}>
+              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg">
+                <img
+                  className=" w-[229.73px] h-[340px]"
+                  src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+                  alt=""
+                />
+                <p className="flex mt-4 ml-2">
+                  <Star className="fill-yellow-400 stroke-inherit w-[18px] " />
+                  {movie.vote_average}/10
+                </p>
+                <p className="ml-2">{movie.original_title}</p>
+              </div>
+            </Link>
           );
         })}
       </div>
