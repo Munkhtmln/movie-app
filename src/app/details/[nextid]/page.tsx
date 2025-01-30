@@ -1,7 +1,30 @@
 import Header from "@/app/_components/Header";
+import { DialogCloseButton } from "@/components/ui/dialog";
 import { MyType } from "@/lib/type";
+import { Copy, Play } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 import { Dot, Star } from "lucide-react";
 import Link from "next/link";
+import Fetchdata from "@/components/util/fetchdata";
+import Trailer from "@/app/_components/Trailer";
+// import {
+//   Dialog,
+//   DialogClose,
+//   DialogContent,
+//   DialogDescription,
+//   DialogTitle,
+//   DialogTrigger,
+// } from "@radix-ui/react-dialog";
+
+// import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+// import { Input } from "@/components/ui/input"
+// import { Label } from "@/components/ui/label"
 
 export default async function Home({
   params: { nextid },
@@ -19,6 +42,8 @@ export default async function Home({
       },
     }
   );
+  const trailer = `/movie/${nextid}/videos?language-en-US`;
+  const cometrailer = await Fetchdata(trailer);
   const similar = await fetch(
     `https://api.themoviedb.org/3/movie/${nextid}/similar?language=en-US&page=1`,
     {
@@ -65,12 +90,41 @@ export default async function Home({
           </div>
         </div>
 
-        <div className="flex mt-5">
+        <div className="flex gap-4 mt-5">
           <img
             className="w-[290px] h-[428px] "
             src={"https://image.tmdb.org/t/p/w500/" + data?.poster_path}
             alt=""
           />
+          <div className="w-[760px] h-[428px]  ">
+            <Dialog>
+              <DialogTrigger
+                asChild
+                className="absolute flex justify-center items-center top-[52vh] left-[40vh] "
+              >
+                <div className="flex w-[220px] gap-4">
+                  <Button variant="outline" className=" w-[12px] rounded-full">
+                    <Play />
+                  </Button>
+                  <p className="text-white font-semibold">Play trailer 1:30</p>
+                </div>
+              </DialogTrigger>
+              <DialogContent>
+                <div>
+                  <iframe
+                    className="w-[512px] h-[280px]"
+                    src={`https://www.youtube.com/embed/${cometrailer?.results[0].key}`}
+                  ></iframe>
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            <img
+              className="w-[760px] h-[428px]"
+              src={"https://image.tmdb.org/t/p/w500/" + data?.backdrop_path}
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <div className="">

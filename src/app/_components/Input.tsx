@@ -36,10 +36,7 @@ export function Inpit() {
       />
       {values.slice(0, 5).map((movie: MyType, index: number) => {
         return (
-          <div
-            key={index}
-            className="flex w-[577px] h-[745px] border-2 bg-white mt-2 right-80 absolute   "
-          >
+          <div key={index} className="flex w-[577px] border-2 bg-white mt-2  ">
             <Link href={`/details/${movie.id}`}>
               <div className="bg-white w-[537px] ml-4 mt-3 border-b-2 h-[116px] flex items-center justify-center   ">
                 <img
