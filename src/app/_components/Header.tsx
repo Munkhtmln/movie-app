@@ -2,10 +2,12 @@ import { PopoverDemo } from "@/components/ui/popover";
 import { Film, Moon } from "lucide-react";
 import Link from "next/link";
 import { Inpit } from "./Input";
+import { Card } from "@/components/ui/card";
+import { ModeToggle } from "./Themetoggler";
 
 export default function Header() {
   return (
-    <div className="flex sticky px-4 z-10 bg-white max-w-[14400px] m-auto  w-[100%] h-[59px]  items-center justify-between  top-0">
+    <Card className="flex sticky px-4 z-10  max-w-[14400px] m-auto  w-[100%] h-[59px] items-center justify-between  top-0">
       <Link href={`/`}>
         <div className="flex gap-2 cursor-pointer">
           <Film className="text-[#4338CA] w-[20px]" />
@@ -16,10 +18,8 @@ export default function Header() {
         <PopoverDemo /> <Inpit />
       </div>
       <div>
-        <button>
-          <Moon />
-        </button>
+        <ModeToggle />
       </div>
-    </div>
+    </Card>
   );
 }

@@ -28,7 +28,7 @@ export default async function Popular() {
               {" "}
               <div
                 key={index}
-                className="flex flex-col flex-wrap w-[229.73px]  h-[439px] gap-spacing/1 bg-gray-100 rounded-lg "
+                className="flex flex-col flex-wrap w-[229.73px]  h-[439px] gap-spacing/1 bg-secondary rounded-lg "
               >
                 <img
                   className="w-[229.73px] h-[340px] rounded-t-lg "

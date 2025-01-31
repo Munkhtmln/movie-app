@@ -14,12 +14,12 @@ export function PopoverDemo() {
       <PopoverTrigger asChild>
         <Button variant="outline">Genre</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[577px] bg-white ml-[440px] h-[333px]">
-        <div className="border-b-2 text-black w-[213px] h-[60px] gap-2 ml-[20px] ">
-          <h1 className="mt-20px">Genres</h1>
+      <PopoverContent className="w-[577px] bg-primary-foreground ml-[440px] h-[270px]">
+        <div className="border-b-2   w-[533px] py-4  h-[70px] gap-4 ml-[20px] ">
+          <h1 className="">Genres</h1>
           <p>See lists of movies by genre</p>
         </div>
-        <div>
+        <div className="w-[577px] h-[333px] flex flex-wrap ">
           <Genre />
         </div>
       </PopoverContent>

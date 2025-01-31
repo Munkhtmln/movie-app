@@ -1,5 +1,5 @@
 import Header from "@/app/_components/Header";
-import { DialogCloseButton } from "@/components/ui/dialog";
+
 import { MyType } from "@/lib/type";
 import { Copy, Play } from "lucide-react";
 
@@ -12,19 +12,9 @@ import { Dot, Star } from "lucide-react";
 import Link from "next/link";
 import Fetchdata from "@/components/util/fetchdata";
 import Trailer from "@/app/_components/Trailer";
-// import {
-//   Dialog,
-//   DialogClose,
-//   DialogContent,
-//   DialogDescription,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@radix-ui/react-dialog";
 
-// import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-// import { Input } from "@/components/ui/input"
-// import { Label } from "@/components/ui/label"
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 export default async function Home({
   params: { nextid },
@@ -90,40 +80,47 @@ export default async function Home({
           </div>
         </div>
 
-        <div className="flex gap-4 mt-5">
+        <div className="flex gap-4 mt-5 ">
           <img
             className="w-[290px] h-[428px] "
             src={"https://image.tmdb.org/t/p/w500/" + data?.poster_path}
             alt=""
           />
           <div className="w-[760px] h-[428px]  ">
-            <Dialog>
-              <DialogTrigger
-                asChild
-                className="absolute flex justify-center items-center top-[52vh] left-[40vh] "
-              >
-                <div className="flex w-[220px] gap-4">
-                  <Button variant="outline" className=" w-[12px] rounded-full">
-                    <Play />
-                  </Button>
-                  <p className="text-white font-semibold">Play trailer 1:30</p>
-                </div>
-              </DialogTrigger>
-              <DialogContent>
-                <div>
-                  <iframe
-                    className="w-[512px] h-[280px]"
-                    src={`https://www.youtube.com/embed/${cometrailer?.results[0].key}`}
-                  ></iframe>
-                </div>
-              </DialogContent>
-            </Dialog>
-
-            <img
-              className="w-[760px] h-[428px]"
-              src={"https://image.tmdb.org/t/p/w500/" + data?.backdrop_path}
-              alt=""
-            />
+            <div className="relative">
+              <img
+                className="w-[760px] h-[428px]"
+                src={"https://image.tmdb.org/t/p/w500/" + data?.backdrop_path}
+                alt=""
+              />
+              <Dialog>
+                <DialogTrigger
+                  asChild
+                  className="absolute flex justify-center items-center bottom-[30px] left-[20px] "
+                >
+                  <div className="flex w-[220px] gap-4">
+                    <Button
+                      variant="outline"
+                      className=" w-[12px] rounded-full"
+                    >
+                      <Play />
+                    </Button>
+                    <p className="text-white font-semibold">
+                      Play trailer 1:30
+                    </p>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="">
+                  <DialogTitle></DialogTitle>
+                  <div>
+                    <iframe
+                      className="w-[512px] h-[280px]"
+                      src={`https://www.youtube.com/embed/${cometrailer?.results[0].key}`}
+                    ></iframe>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </div>
       </div>
@@ -157,7 +154,7 @@ export default async function Home({
         </div>
         <div className="flex gap-10 w-[1080px] mt-8 m-auto border-b-2">
           <h1>Stars</h1>
-          <div className="flex absolute left-52 gap-10">
+          <div className="flex ml-4 gap-10">
             {datas.cast?.slice(0, 5).map((actor: MyType, index: number) => {
               return <p key={index}>{actor.name}</p>;
             })}

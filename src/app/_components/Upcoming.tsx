@@ -26,7 +26,7 @@ export default async function Upcoming() {
         {data.results.slice(0, 10).map((movie: MyType, index: any) => {
           return (
             <Link href={`/details/${movie.id}`} key={index}>
-              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg">
+              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-secondary rounded-lg">
                 <img
                   className="w-[229.73px] h-[340px] rounded-t-lg"
                   src={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}

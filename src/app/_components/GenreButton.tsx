@@ -1,4 +1,6 @@
+import { Badge } from "@/components/ui/badge";
 import { MyGenre, MyType } from "@/lib/type";
+import { ChevronRight } from "lucide-react";
 
 export default async function Genre() {
   const token =
@@ -15,11 +17,16 @@ export default async function Genre() {
   const data = await response.json();
   console.log(data);
   return (
-    <div>
+    <div className="flex h-[20px] flex-wrap gap-4 mt-4 px-4  ">
       {data.genres?.map((movie: MyGenre, index: number) => {
         return (
-          <div key={index} className="flex w-[]">
-            <button className="text-black">{movie.name}</button>
+          <div key={index} className=" h-[20px]">
+            <Badge
+              variant="outline"
+              className=" flex border-2 justify-center h-[24px]  items-center text-sm rounded-xl"
+            >
+              {movie.name} <ChevronRight className="w-[15px]" />
+            </Badge>
           </div>
         );
       })}
