@@ -82,7 +82,7 @@ export default async function Home({
 
         <div className="flex gap-4 mt-5 ">
           <img
-            className="w-[290px] h-[428px] "
+            className="w-[290px] h-[428px] bg-inherit "
             src={"https://image.tmdb.org/t/p/w500/" + data?.poster_path}
             alt=""
           />
@@ -115,7 +115,7 @@ export default async function Home({
                   <div>
                     <iframe
                       className="w-[512px] h-[280px]"
-                      src={`https://www.youtube.com/embed/${cometrailer?.results[0].key}`}
+                      src={`https://www.youtube.com/embed/${cometrailer?.results[0]?.key}`}
                     ></iframe>
                   </div>
                 </DialogContent>
@@ -174,7 +174,7 @@ export default async function Home({
             .map((like: MyType, index: number) => {
               return (
                 <Link href={`/details/${like.id}`}>
-                  <div className="flex flex-col flex-wrap w-[190px] h-[372px] gap-spacing/1 bg-gray-100 rounded-lg">
+                  <div className="flex flex-col flex-wrap w-[190px] h-[372px] gap-spacing/1 bg-secondary rounded-lg">
                     <img
                       key={index}
                       className="w-[190px] h-[281.38px]"

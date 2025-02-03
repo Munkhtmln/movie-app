@@ -16,7 +16,7 @@ import { Button } from "./button";
 import Trailer from "@/app/_components/Trailer";
 import Watchtrailer from "./trailerwatch";
 import Image from "next/image";
-
+import Autoplay from "embla-carousel-autoplay";
 export async function CarouselDemo() {
   const token =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDVjNjBlOTdmYzQxNDVkNGIzZDlhMjk0NjVmZmEzZCIsIm5iZiI6MTczNzM0MjQxMi43MjUsInN1YiI6IjY3OGRiZGNjZTQ1NjYzOTlhMjZlMWEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Qig5T_JxICE_KQE6jl2ivbla8UZdUGdSJvm2xW-86NQ";
@@ -38,7 +38,7 @@ export async function CarouselDemo() {
             <div className=" absolute inset-0 z-0 bg-cover bg-no-repeat ">
               <Link href={`/details/${movie.id}`}>
                 <Image
-                  src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path})`}
+                  src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
                   alt=""
                   width={1000}
                   className="w-[100%]"
