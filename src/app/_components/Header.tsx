@@ -1,9 +1,11 @@
-import { PopoverDemo } from "@/components/ui/popover";
 import { Film, Moon } from "lucide-react";
 import Link from "next/link";
-import { Inpit } from "./Input";
+
 import { Card } from "@/components/ui/card";
 import { ModeToggle } from "./Themetoggler";
+
+import { Inpit } from "./Input";
+import { PopoverDemo } from "@/components/ui/popover";
 
 export default function Header() {
   return (

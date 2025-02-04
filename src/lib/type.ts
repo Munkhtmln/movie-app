@@ -16,6 +16,7 @@ export type MyType = {
   genres: string;
   backdrop_path: string;
   key: number;
+  total_results: string;
 };
 export type MyGenre = {
   name: string;

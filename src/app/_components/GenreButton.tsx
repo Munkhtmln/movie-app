@@ -1,5 +1,4 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
 import { Toggle } from "@/components/ui/toggle";
 import { MyGenre, MyType } from "@/lib/type";
 import { ChevronRight } from "lucide-react";
@@ -8,8 +7,8 @@ import { useRouter } from "next/navigation";
 
 export default function Genre({ data }: { data: MyGenre[] }) {
   const router = useRouter();
-  const userderFunction = () => {
-    router.push("/genre");
+  const userderFunction = (select: string[]) => {
+    router.push(`/genre14?genreids=${select}`);
   };
   return (
     <div className="flex h-[20px] flex-wrap gap-4 mt-4 px-4  ">
