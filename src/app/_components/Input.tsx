@@ -1,5 +1,7 @@
 "use client";
 
+import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup } from "@/components/ui/toggle-group";
 import Fetchdata from "@/components/util/fetchdata";
 import { MyType } from "@/lib/type";
 import {
@@ -9,9 +11,14 @@ import {
 } from "@radix-ui/react-popover";
 import { MagnetIcon, Search, Star } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export function Inpit() {
+  const { push } = useRouter();
+  const handleclick = (select: string[]) => {
+    push(`/searchresults/14?genreids=${select}`);
+  };
   const [search, setSearch] = useState("");
   const [values, setvalues] = useState([]);
   const [open, setOpen] = useState(false);
@@ -82,11 +89,15 @@ export function Inpit() {
               </div>
             );
           })}
-          <Link href={`/genre`}>
-            <div className="flex w-[577px] bg-primary-foreground  h-[40px] pr-[10px] ">
-              <p className="ml-4 mt-2">See all results for </p>{" "}
-              <p className="mt-2">"{search}"</p>
-            </div>
+          <Link href={`/searchresults/searchValue=${search}`}>
+            <ToggleGroup type="multiple" onValueChange={handleclick}>
+              <Toggle>
+                <div className="flex w-[577px] bg-primary-foreground  h-[40px] pr-[10px] ">
+                  <p className="ml-4 mt-2">See all results for </p>{" "}
+                  <p className="mt-2">"{search}"</p>
+                </div>
+              </Toggle>
+            </ToggleGroup>
           </Link>
         </PopoverContent>
       </Popover>

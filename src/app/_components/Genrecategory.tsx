@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function GenreCat({ data }: { data: [] }) {
+export default function GenreCat({ data }: { data: MyGenre[] }) {
   // setSelectedGenre()router.push(`/genre14?genreids=${select}`);
 
   return (

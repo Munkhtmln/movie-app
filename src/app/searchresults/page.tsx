@@ -7,21 +7,22 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 import Genre from "../_components/GenreButton";
 import { Star } from "lucide-react";
+import SearchGenre from "../_components/Searchgenre";
 
-export default function GenrePage() {
+export default function SearchPage() {
   const [mov, setMov] = React.useState<any>([]);
   const [genre, setGenre] = React.useState<MyGenre[]>([]);
   const searchParams = useSearchParams();
   const [results, setResults] = React.useState();
 
-  const genreId = searchParams.get("genreids");
+  const Searchvalue = searchParams.get("Searchvalue");
   const page = searchParams.get("page") || 1;
   React.useEffect(() => {
     const responce = async () => {
       const token =
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDVjNjBlOTdmYzQxNDVkNGIzZDlhMjk0NjVmZmEzZCIsIm5iZiI6MTczNzM0MjQxMi43MjUsInN1YiI6IjY3OGRiZGNjZTQ1NjYzOTlhMjZlMWEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Qig5T_JxICE_KQE6jl2ivbla8UZdUGdSJvm2xW-86NQ";
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${genreId}&page=${page}`,
+        `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${Searchvalue}&page=${page}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,7 +37,7 @@ export default function GenrePage() {
       console.log(res);
     };
     responce();
-  }, [genreId, page]);
+  }, [Searchvalue, page]);
 
   React.useEffect(() => {
     const data = async () => {
@@ -75,13 +76,6 @@ export default function GenrePage() {
     <div className="w-[1280px] m-auto ">
       <p className="font-semibold text-3xl mt-20 pb-7">Search filter</p>
       <div className="flex ">
-        <div className="w-[487px] h-[352px] ">
-          <p className="font-semibold text-3xl ">Genres</p>
-          <p className="">See lists of movies by genre</p>
-          <div>
-            <Genre genres={genre} />
-          </div>
-        </div>
         <div>
           <p className="font-semibold text-xl pl-4 border-l-2  ">
             {results} titles
@@ -109,6 +103,13 @@ export default function GenrePage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+        <div className="w-[487px] h-[352px] ">
+          <p className="font-semibold text-3xl ">Genres</p>
+          <p className="">See lists of movies by genre</p>
+          <div>
+            <SearchGenre genres={genre} />
           </div>
         </div>
       </div>
