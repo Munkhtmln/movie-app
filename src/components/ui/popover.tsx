@@ -7,6 +7,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import React from "react";
 import Genre from "@/app/_components/GenreButton";
+import GenreCat from "@/app/_components/Genrecategory";
 
 export async function PopoverDemo() {
   const token =
@@ -39,7 +40,7 @@ export async function PopoverDemo() {
               <p>See lists of movies by genre</p>
             </div>
             <div className="w-[577px] h-[333px] flex flex-wrap ">
-              <Genre data={data?.genres} />
+              <GenreCat data={data?.genres} />
             </div>
           </PopoverContent>
         </Popover>

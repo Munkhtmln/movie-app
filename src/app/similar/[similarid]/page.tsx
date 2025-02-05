@@ -22,13 +22,13 @@ export default async function Home({
   const data = await response.json();
   console.log(data);
   return (
-    <div className="max-w-[1440px] ">
-      <Header />
+    <div className="max-w-[1280px] m-auto ">
+      <p className="text-3xl font-semibold mt-10">More like this</p>
       <div className="flex max-w-[1280px] flex-wrap m-auto mt-8 gap-8">
         {data.results.map((like: MyType, index: number) => {
           return (
             <Link href={`/details/${like.id}`}>
-              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg">
+              <div className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-secondary rounded-lg">
                 <img
                   key={index}
                   className="w-[230px] h-[340px]"

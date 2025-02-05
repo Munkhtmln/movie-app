@@ -59,7 +59,6 @@ export default async function Home({
 
   return (
     <div>
-      <Header />
       <div className="max-w-[1080px] h-[524px] m-auto mt-10">
         <div className="flex max-w-[1080px] justify-between">
           <div>

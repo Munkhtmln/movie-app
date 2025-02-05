@@ -17,7 +17,7 @@ export default async function Toprated() {
   return (
     <div>
       <div className="flex justify-between max-w-[1280px] h-[59px] m-auto items-center my-4">
-        <p className="text-[#09090B] font-semibold text-2xl  ">Top Rated</p>{" "}
+        <p className=" font-semibold text-2xl  ">Top Rated</p>{" "}
         <Link href="/toprated">See more...</Link>
       </div>
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto">

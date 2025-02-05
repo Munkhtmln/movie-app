@@ -18,7 +18,7 @@ export default async function Popular() {
   return (
     <div>
       <div className="flex justify-between max-w-[1280px] m-auto h-[59px] items-center my-4">
-        <p className="text-[#09090B] font-semibold text-2xl ">Popular</p>{" "}
+        <p className="font-semibold text-2xl ">Popular</p>{" "}
         <Link href="/popular">See more...</Link>
       </div>
       <div className="flex flex-wrap gap-[32px] max-w-[1280px] m-auto">

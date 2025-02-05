@@ -7,7 +7,6 @@ import { CarouselDemo } from "@/components/ui/carouselcover";
 export default async function Home() {
   return (
     <div className="flex flex-col relative">
-      <Header />
       <CarouselDemo />
       <Upcoming />
       <Popular />

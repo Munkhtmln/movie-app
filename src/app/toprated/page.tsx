@@ -19,7 +19,6 @@ export default async function Home() {
   const data = await response.json();
   return (
     <div>
-      <Header />
       <h2 className="px-6 py-10 text-3xl font-semibold">Top Rated</h2>
       <div className="flex flex-wrap gap-8 m-auto max-w-[1280px]">
         {data.results?.map((movie: MyType, index: number) => {
@@ -27,7 +26,7 @@ export default async function Home() {
             <Link href={`details/${movie.id}`}>
               <div
                 key={index}
-                className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-gray-100 rounded-lg"
+                className="flex flex-col flex-wrap w-[229.73px] h-[439px] gap-spacing/1 bg-secondary rounded-lg"
               >
                 <img
                   className=" w-[229.73px] h-[340px]"

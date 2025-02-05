@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@radix-ui/react-popover";
-import { Star } from "lucide-react";
+import { MagnetIcon, Search, Star } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -32,29 +32,36 @@ export function Inpit() {
     <div className="">
       <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
-          <input
-            className=" ml-3 border-2 rounded-md h-[36px] mt- w-[379px]"
-            value={search}
-            type="text"
-            name=""
-            id=""
-            placeholder={"search"}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setOpen(e.target.value.length > 0);
-            }}
-            onFocus={() => setOpen(true)}
-          />
+          <div className="flex ">
+            {/* <Search className=" ml-2 mt-1" /> */}
+            <input
+              className=" ml-3  border-2 rounded-md h-[36px] mt- w-[349px] "
+              value={search}
+              type="text"
+              name=""
+              id=""
+              placeholder={"Search..."}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setOpen(e.target.value.length > 0);
+              }}
+              onFocus={() => setOpen(true)}
+            />
+          </div>
         </PopoverTrigger>
         <PopoverContent
-          className="w-80"
+          align="start"
+          className="w-80  "
           onOpenAutoFocus={(e) => e.preventDefault()}
         >
           {values.slice(0, 5).map((movie: MyType, index: number) => {
             return (
-              <div key={index} className="flex w-[577px]  bg-white">
+              <div
+                key={index}
+                className="flex w-[577px]  bg-primary-foreground"
+              >
                 <Link href={`/details/${movie.id}`} className="border-none">
-                  <div className="bg-white w-[537px] ml-4 mt-3 h-[116px] border-b-2 flex items-center justify-center   ">
+                  <div className="bg-primary-foreground w-[537px] ml-4 mt-3 h-[116px] border-b-2 flex items-center justify-center   ">
                     <img
                       className="h-[100px] w-[67px]"
                       src={
@@ -76,8 +83,9 @@ export function Inpit() {
             );
           })}
           <Link href={`/genre`}>
-            <div className="flex w-[577px] bg-white ml-4 h-[40px] pr-[10px] ">
-              <p>See all results for </p> <p>"{search}"</p>
+            <div className="flex w-[577px] bg-primary-foreground  h-[40px] pr-[10px] ">
+              <p className="ml-4 mt-2">See all results for </p>{" "}
+              <p className="mt-2">"{search}"</p>
             </div>
           </Link>
         </PopoverContent>

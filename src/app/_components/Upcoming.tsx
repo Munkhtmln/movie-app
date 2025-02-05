@@ -18,7 +18,7 @@ export default async function Upcoming() {
   return (
     <div>
       <div className="flex justify-between max-w-[1280px] h-[59px] items-center m-auto my-4">
-        <p className="text-[#09090B] font-semibold text-2xl ">Upcoming</p>{" "}
+        <p className=" font-semibold text-2xl ">Upcoming</p>{" "}
         <Link href={"/upcoming"}>see more...</Link>
       </div>
 

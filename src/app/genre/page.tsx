@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { MyGenre, MyType } from "@/lib/type";
 import React from "react";
 import { useSearchParams } from "next/navigation";
+import Genre from "../_components/GenreButton";
 
 export default function GenrePage() {
   const [mov, setMov] = React.useState<any>([]);
-  const [genr, setGenr] = React.useState<MyGenre[]>([]);
+  const [genre, setGenre] = React.useState<MyGenre[]>([]);
   const searchParams = useSearchParams();
 
   const genreId = searchParams.get("genreIds");
@@ -46,7 +47,7 @@ export default function GenrePage() {
         }
       );
       const res = await responseData.json();
-      setGenr(res.genres || []);
+      setGenre(res.genres || []);
     };
     data();
   }, []);
@@ -69,9 +70,7 @@ export default function GenrePage() {
     <div>
       <div className="flex">
         <div className="">
-          {genr.map((genre) => {
-            return <Toggle>{genre.name} </Toggle>;
-          })}
+          <Genre genres={genre} />;
         </div>
         <div>
           <div className=" ">
