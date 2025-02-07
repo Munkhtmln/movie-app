@@ -9,19 +9,22 @@ import { useState } from "react";
 
 export default function SearchGenre({
   Searchvalue,
+  genres,
 }: {
-  Searchvalue: MyGenre[];
+  Searchvalue: string | null;
+  genres: MyGenre[];
 }) {
   const { push } = useRouter();
   const handleclick = (select: string[]) => {
-    push(`/searchresults/14?Searchvalue=${select}`);
+    push(`/searchresults?searchValue=${Searchvalue}&genreIds=${select}`);
+    console.log(Searchvalue);
   };
   // setSelectedGenre()router.push(`/genre14?genreids=${select}`);
 
   return (
     <ToggleGroup type="multiple" onValueChange={handleclick}>
       <div className="flex h-[20px] flex-wrap gap-4 mt-4 px-4  ">
-        {Searchvalue?.map((genre: MyGenre, index: number) => {
+        {genres?.map((genre: MyGenre, index: number) => {
           return (
             <div className=" h-[20px]">
               <ToggleGroupItem

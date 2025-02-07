@@ -10,7 +10,7 @@ import { PopoverDemo } from "@/components/ui/popover";
 export default function Header() {
   return (
     <Card className="flex sticky px-4 z-10  max-w-[14400px] m-auto  w-[100%] h-[59px] items-center justify-between border-none  top-0">
-      <div className="w-[1440px] flex justify-between m-auto items-center ">
+      <div className="w-[1280px] flex justify-between m-auto items-center ">
         <Link href={`/`}>
           <div className="flex gap-2 cursor-pointer">
             <Film className="text-[#4338CA] w-[20px]" />

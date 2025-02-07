@@ -89,7 +89,7 @@ export function Inpit() {
               </div>
             );
           })}
-          <Link href={`/searchresults/searchValue=${search}`}>
+          <Link href={`/searchresults?searchValue=${search}`}>
             <ToggleGroup type="multiple" onValueChange={handleclick}>
               <Toggle>
                 <div className="flex w-[577px] bg-primary-foreground  h-[40px] pr-[10px] ">

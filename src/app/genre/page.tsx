@@ -75,7 +75,7 @@ export default function GenrePage() {
     <div className="w-[1280px] m-auto ">
       <p className="font-semibold text-3xl mt-20 pb-7">Search filter</p>
       <div className="flex ">
-        <div className="w-[487px] h-[352px] ">
+        <div className="w-[487px] h-[352px] sticky  top-14 ">
           <p className="font-semibold text-3xl ">Genres</p>
           <p className="">See lists of movies by genre</p>
           <div>

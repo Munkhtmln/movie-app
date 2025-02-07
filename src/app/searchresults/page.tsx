@@ -14,15 +14,17 @@ export default function SearchPage() {
   const [genre, setGenre] = React.useState<MyGenre[]>([]);
   const searchParams = useSearchParams();
   const [results, setResults] = React.useState();
+  const genreId = searchParams.get("genreIds");
 
-  const Searchvalue = searchParams.get("Searchvalue");
+  const Searchvalue = searchParams.get("searchValue");
   const page = searchParams.get("page") || 1;
+  console.log(Searchvalue);
   React.useEffect(() => {
     const responce = async () => {
       const token =
         "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDVjNjBlOTdmYzQxNDVkNGIzZDlhMjk0NjVmZmEzZCIsIm5iZiI6MTczNzM0MjQxMi43MjUsInN1YiI6IjY3OGRiZGNjZTQ1NjYzOTlhMjZlMWEzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Qig5T_JxICE_KQE6jl2ivbla8UZdUGdSJvm2xW-86NQ";
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?language=en&with_genres=${Searchvalue}&page=${page}`,
+        `https://api.themoviedb.org/3/search/movie?query=${Searchvalue}&language=en-US&page=${page}/genre/movie/list?with_genres=${genreId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -32,12 +34,13 @@ export default function SearchPage() {
       );
 
       const res = await response.json();
+      console.log("response!!!", res);
       setResults(res.total_results);
       setMov(res.results || []);
       console.log(res);
     };
     responce();
-  }, [Searchvalue, page]);
+  }, [Searchvalue, page, genreId]);
 
   React.useEffect(() => {
     const data = async () => {
@@ -80,7 +83,7 @@ export default function SearchPage() {
           <p className="font-semibold text-xl pl-4 border-l-2  ">
             {results} titles
           </p>
-          <div className="flex w-[906px]  flex-wrap gap-12  border-l-2 pt-10 ">
+          <div className="flex w-[906px]  flex-wrap gap-12  border-r-2 pt-10 ">
             {mov.map((movie: MyType, index: number) => {
               return (
                 <div
@@ -105,11 +108,11 @@ export default function SearchPage() {
             })}
           </div>
         </div>
-        <div className="w-[487px] h-[352px] ">
+        <div className="w-[487px] h-[352px] ml-10 sticky top-14 ">
           <p className="font-semibold text-3xl ">Genres</p>
           <p className="">See lists of movies by genre</p>
           <div>
-            <SearchGenre genres={genre} />
+            <SearchGenre Searchvalue={Searchvalue} genres={genre} />
           </div>
         </div>
       </div>

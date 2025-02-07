@@ -16,7 +16,7 @@ export default function GenreCat({ data }: { data: MyGenre[] }) {
       <div className="flex h-[20px] flex-wrap gap-4 mt-4 px-4">
         {data?.map((genres: MyGenre, index: number) => {
           return (
-            <Link href={`/genre`}>
+            <Link href={`/genre/aa?genreids=${genres.id}`}>
               <div className=" h-[20px]">
                 <Toggle
                   key={genres.id}
